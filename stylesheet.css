@@ -1,0 +1,488 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    background-color: #e6e6e6;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    /*border-top: 2px solid aqua;*/
+    min-height: 500px;
+    min-width: 320px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+/*------------------------------------------------------Header-*/
+header {
+    height: 40px;
+    /*border: 2px solid brown;*/
+    width: 100%;
+}
+
+header span {
+    padding: 6px 10px;
+    font-size:14px;
+}
+
+
+header span img {
+    float: right;
+    height: 80%;
+    margin: 0;
+    padding: 5px 10px;
+}
+
+    header span img:hover {
+        background-color: #ccc;
+    }
+
+    header span.close-icon img:hover {
+        background-color: red; 
+    }
+/*----------------------------------------------------Main Row---*/
+.row {
+    width: 100%;
+    height: calc(100% - 40px);
+    display: flex;
+    flex-direction: row;
+}
+/*-----------------------------------------------------Top Nav---*/
+.topnav {
+    /* border: 2px solid green; */
+    width: 100%;
+    height: 7%;
+    padding: 5px;
+}
+
+#hamburger-icon-img {
+    width: 20px;
+    height: 20px; 
+}
+
+#standardMenue {
+padding-left: 15px;
+}
+
+.topnav span.hamburger-icon {
+    padding: 5px 0px 0px 6px;
+}
+
+.topnav span.hamburger-icon:hover {
+    background-color: #ccc;
+}
+
+.pagination {
+    display: inline-block;
+    /* float: left; */
+}
+
+#history-icon {
+    display: none; 
+    float: right;
+    padding: 5px 5px;
+    /* visibility: hidden; */
+}
+
+#historyIconImg {
+    width: 20px;
+    height: 20px;
+    color: black;
+}
+
+#history-icon:hover{
+    background-color: #ccc;
+}
+
+.pagination a {
+    text-decoration: none;
+    float: right;
+    color: black;
+    margin: 4px 6px;
+    font-size: 16px;
+}
+
+    .pagination a.active, .pagination a:focus:not(active) {
+        border-bottom: 3px solid blue;
+    }
+
+    #history, #memory {
+        overflow-y: auto;
+        height: calc(100% - 50px);
+    }
+
+/*---------------------------------------------------input Row--*/
+.input-row {
+    width: 100%;
+    /* border: 2px solid blue; */
+    height: 15%;
+}
+
+    .input-row div {
+        display: block;
+        float: right;
+        clear: both;
+        background-color: #e6e6e6;
+        text-align: right;
+        /* border: 2px solid red; */
+    }
+
+#expretion {
+    font-size: 16px;
+    color: gray;
+    height: 30%;
+    padding: 2px;
+}
+#result {
+    height: 70%;
+    font-weight: bold;
+    font-size: 40px;
+}
+/*---------------------------------------------Memory table Row---*/
+#memory-Store {
+    display: none;
+}
+
+.memory-row {
+    border-collapse: collapse;
+    padding: 5px;
+     /* border: 2px solid orange;  */
+    height: 7%;
+    width: 100%;
+}
+
+    .memory-row .memory-btn {
+        border: none;
+        padding: 7px 0;
+        background-color: #e6e6e6;
+        float: left;
+        width: 15%;
+        justify-content: center;
+        display: flex;
+        height: 30px;
+        margin-top: 30px;
+    }
+
+        .memory-row div:hover {
+            background-color: #ccc;
+        }
+/*-------------------------------------------------Memory Tooltip--*/
+.tooltip {
+    position: relative;
+    font-size: 14px;
+}
+
+    .tooltip .tooltip-text {
+        visibility: hidden;
+        width: 140px;
+        background-color: #e6e6e6;
+        border: 1px solid #ccc;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0px;
+        font-size: 12px;
+        /*transition-delay: 1s;
+        transition-duration: 1s;
+        transition-timing-function: ease-out;*/
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        bottom: 100%;
+        margin-left: -63%;
+    }
+
+    .tooltip:hover .tooltip-text {
+        visibility: visible;
+    }
+/*--------------------------------------------------top-row table--*/
+#toprow {
+    display: none;
+}
+
+/*--------------------------------------------------main table-----*/
+
+.maintable {
+    border: 2px solid groove;
+    width: 100%;
+    border-collapse: collapse;
+    height: 67%;
+    display: table;
+}
+
+    .maintable td {
+        /*padding: 25px 45px;*/
+        width:20%;
+        height:20%;
+        border: 2px solid #ddd;
+        background-color: #fafafa;
+        text-align: center;
+    }
+
+    .maintable td:hover {
+        background-color: #ccc;
+    }
+
+    .maintable td:hover {
+        background-color: #ccc;
+    }
+
+    .maintable #equal:hover {
+        background-color: #4599db;
+    }
+
+    .maintable .OperationButton {
+        background-color: #f0f0f0;
+    }
+
+    .lucidaFont {
+        font-family: Lucida Calligraphy;
+    }
+/*< ---------------------------------------------main table memory--->*/
+/* #mainHistory {
+    display: none;
+} */
+    .memoryTable {
+        border: 2px solid groove;
+        width: 100%;
+        height: 67%;
+        background-color: #f4f4f4;
+        position: relative;
+        display: none;
+    }
+
+    #memoryTableRow,#historyTableRow {
+       padding: 20px;
+       font-size: 14px;
+       width: 100%;
+       height: calc(100% - 50px);
+       overflow-y: auto;
+    }
+
+    .memoryTableRow:hover {
+        background-color: #d8d8d8;
+    }
+    
+/*< ---------------------------------------------side column--->*/
+.recyclebin-icon {
+    /*display:none;*/
+    padding: 10px 15px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+    .recyclebin-icon:hover {
+        background-color: #ccc;
+    }
+/*--------------------------------------------------memory side--*/
+.memory-side {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 11px;
+    width: 100%;
+    height: calc(100% - 7%);
+}
+
+.historyItem,.memoryItem {
+padding: 12px;
+direction: rtl;
+font-weight: normal;
+}
+
+.historyExpre {
+    text-align: end;
+    direction: ltr;
+    font-size: 16px;
+    color: gray;
+    padding-bottom: 5px;
+}
+
+.historyRst, .memoryRst {
+    text-align: end;
+    direction: ltr;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.historyItem:hover {
+    background-color: #ccc;
+}
+
+.memoryItem:hover {
+    background-color: #ccc;
+}
+
+#memoryPage {
+    display: none;
+}
+
+.history, .memory {
+    height: calc(100% - 50px);
+    overflow-y: auto;
+}
+
+.memory-footer{
+    height: 50px;
+}
+
+/*-------------------------------------------------------Column-*/
+
+.column {
+    float: left;
+}
+
+    /*right column */
+    .column.side {
+        width: 35%;
+        /*border: 2px solid red;*/
+        position: relative;
+    }
+
+    /* Middle column */
+    .column.middle {
+        width: 75%;
+        /*border: 2px solid yellow;*/
+    }
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*----------------------------------------------------hamberger menue- */
+
+.sidenav {
+    height: 100%;  
+    width: 0;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    background-color: #e6e6e6;
+    overflow-x: hidden; 
+    transition: 0.6s; 
+    /* border: 2px solid brown; */
+}
+
+.sidenav-main{
+    height: calc(100% - 120px); 
+    overflow-y: scroll;
+}
+
+  .sidenav-main a{
+    padding: 10px 8px 10px 32px;
+    text-decoration: none;
+    font-size: 16px; 
+    display: block;
+    transition: 0.6s;
+    color: black;
+  }
+  
+  .conventer{
+    font-weight: bolder;
+    font-size: 18px;
+    }
+
+  .sidenav-main a:hover {
+    background-color:#ccc; 
+  }
+
+  .sidenav-foot {
+    height: 50px;
+    align-items: center;
+    justify-content: unset;
+    font-size: 14px ;
+    background-color: #e6e6e6;
+    position: sticky;
+    bottom: 0;
+    transition: 0.6s;
+}
+
+.sidenav-foot div:hover {
+    height: 38px;
+    width: 93%;  
+}
+
+.sidenav-foot div:hover {
+    background-color:#ccc;   
+}
+
+.sidenav-foot a {
+padding: 10px;
+text-decoration: none;
+color: black;
+margin-bottom:5px ;
+}
+
+.sidenav-foot img {
+    padding-top: 7px;
+    height: 20px;
+    width: 20px;
+    margin: 0 0 0 5px;
+}
+
+.sidenav-foot:hover {
+    cursor: default;
+    background-color: var(--normal-hover-color)
+}
+
+  /* ----------------- */
+
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+.activeMenue {
+    background-color:rgb(184, 182, 182);
+}
+
+/* 
+#mainHistory, #mainMemory {
+    display: none;
+} */
+
+  /*------------------------------------------------------media----*/
+@media screen and  (max-height: 650px) and (max-width:500px) {
+    .pagination a {
+        display: none;
+    }
+
+    #memory-Store {
+        display: flex;
+    }
+
+    #history-icon {
+        display: block;
+    }
+
+    .column.side, .column.middle {
+        width: 100%;
+        height: 100%;
+    }
+
+    .column.side {
+        display: none;
+    }
+
+    .maintable tr td.left-column {
+        /*display:table-cell;*/
+        display: none;
+    }
+
+    #toprow {
+        display: table-row;
+    }
+
+    .maintable td {
+        height: 16.66%;
+    }
+
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+ 
