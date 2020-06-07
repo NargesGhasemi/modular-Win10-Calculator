@@ -6,13 +6,15 @@
     'clickNumber': clickNumberFunction,
     'clickOperator': clickOperatorFunction,
     'clickOperation': clickOperationFunction,
+    'backSpace': backSpaceFunction,
+    'plusmn': plusmnFunction,
+    'mathDecks': mathDecksFunction
   };
 
-
-  app.renderCalc = function (type, operation) {
+  app.renderCalc = function (type, value) {
     const render = _process[type];
     if (!render) return;
-    render(operation);
+    render(value);
   }
 
   function clickNumberFunction() {
@@ -33,7 +35,7 @@
 
   function clickOperatorFunction() {
     const m_operator = event.target.innerText;
-    if (_general.txtResult != "0" && _general.txtResult != "" && _general.lastClick == "number") {
+    if ((_general.txtResult != "0" && _general.txtResult != "") && _general.lastClick == "number" || _general.lastClick == "backspace" || _general.lastClick == "plusmn" ) {
       _general.txtExpresion += _general.txtResult + m_operator;
       _general.txtResult = "";
     }
@@ -91,6 +93,14 @@
     switch (type) {
       case "num":
         _general.realExpresion += input;
+        break;
+      case "plusmn":
+        var a = input.substring(1,input.length);
+        _general.realExpresion = "(" + _general.realExpresion.substring(0, _general.realExpresion.length - (input.substring(1, input.length)).length)+ input + ")";
+        break;
+      case "backspace":
+        if (input == 0) return;
+        _general.realExpresion = "(" + _general.realExpresion.substring(0, _general.realExpresion.length - 1) + ")";
         break;
       case "mainoper":
         _general.realExpresion = "(" + _general.realExpresion + ")";
@@ -176,14 +186,15 @@
     _general.lastClick = "equal"
   }
 
-  _element.plusmn.onclick = function () {
+  function plusmnFunction () {
     if (_general.txtResult == "0" || _general.txtResult == "") return;
-    _general.txtResult = checkNegetiveNumber(_general.txtResult) ? _general.txtResult.substring(1, _general.txtResult.length) : "-" + _general.txtResult;
-    _element.result.innerText = _general.txtResult;
-    _general.lastClick = "plusmn";
+      _general.txtResult = checkNegetiveNumber(_general.txtResult) ? _general.txtResult.substring(1, _general.txtResult.length) : "-" + _general.txtResult;
+      _element.result.innerText = _general.txtResult;
+      createRealExpresion(_general.txtResult, "plusmn");
+      _general.lastClick = "plusmn";
   }
 
-  _element.mathDecks.onclick = function () {
+  function mathDecksFunction () {
     _general.lastClick = "mathDecks";
     _general.txtResult = _general.txtResult.indexOf('.') === -1 ? _general.txtResult + "." : _general.txtResult;
     _element.result.innerText = _general.txtResult;
@@ -191,13 +202,14 @@
     _general.lastClick = "number";
   }
 
-  _element.backSpace.onclick = function () {
+  function backSpaceFunction() {
     if (_general.lastClick == "operation" || _general.lastClick == "Operators") return;
     _general.txtResult = _general.txtResult.toString().substring(0, _general.txtResult.length - 1);
     if (_general.txtResult == "")
       _general.txtResult = 0;
-    _general.lastClick = "backSpace";
     _element.result.innerText = _general.txtResult;
+    createRealExpresion(_general.txtResult, "backspace");
+    _general.lastClick = "backspace";
   }
 
 }(app);
