@@ -8,7 +8,6 @@ body, html {
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
     height: 100%;
-    /*border-top: 2px solid aqua;*/
     min-height: 500px;
     min-width: 320px;
     width: 100%;
@@ -18,7 +17,6 @@ body, html {
 /*------------------------------------------------------Header-*/
 header {
     height: 40px;
-    /*border: 2px solid brown;*/
     width: 100%;
 }
 
@@ -27,7 +25,6 @@ header span {
     font-size:14px;
 }
 
-
 header span img {
     float: right;
     height: 80%;
@@ -35,13 +32,13 @@ header span img {
     padding: 5px 10px;
 }
 
-    header span img:hover {
-        background-color: #ccc;
-    }
+header span img:hover {
+    background-color: #ccc;
+}
 
-    header span.close-icon img:hover {
-        background-color: red; 
-    }
+header span.close-icon img:hover {
+    background-color: red; 
+}
 /*----------------------------------------------------Main Row---*/
 .row {
     width: 100%;
@@ -51,7 +48,6 @@ header span img {
 }
 /*-----------------------------------------------------Top Nav---*/
 .topnav {
-    /* border: 2px solid green; */
     width: 100%;
     height: 7%;
     padding: 5px;
@@ -63,7 +59,7 @@ header span img {
 }
 
 #standardMenue {
-padding-left: 15px;
+    padding-left: 15px;
 }
 
 .topnav span.hamburger-icon {
@@ -76,14 +72,12 @@ padding-left: 15px;
 
 .pagination {
     display: inline-block;
-    /* float: left; */
 }
 
 #history-icon {
     display: none; 
     float: right;
     padding: 5px 5px;
-    /* visibility: hidden; */
 }
 
 #historyIconImg {
@@ -104,30 +98,28 @@ padding-left: 15px;
     font-size: 16px;
 }
 
-    .pagination a.active, .pagination a:focus:not(active) {
-        border-bottom: 3px solid blue;
-    }
+.pagination a.active, .pagination a:focus:not(active) {
+    border-bottom: 3px solid blue;
+}
 
-    #history, #memory {
-        overflow-y: auto;
-        height: calc(100% - 50px);
-    }
+#history, #memory {
+    overflow-y: auto;
+    height: calc(100% - 50px);
+}
 
 /*---------------------------------------------------input Row--*/
 .input-row {
     width: 100%;
-    /* border: 2px solid blue; */
     height: 15%;
 }
 
-    .input-row div {
-        display: block;
-        float: right;
-        clear: both;
-        background-color: #e6e6e6;
-        text-align: right;
-        /* border: 2px solid red; */
-    }
+.input-row div {
+    display: block;
+    float: right;
+    clear: both;
+    background-color: #e6e6e6;
+    text-align: right;
+}
 
 #expretion {
     font-size: 16px;
@@ -148,61 +140,63 @@ padding-left: 15px;
 .memory-row {
     border-collapse: collapse;
     padding: 5px;
-     /* border: 2px solid orange;  */
     height: 7%;
     width: 100%;
 }
 
-    .memory-row .memory-btn {
-        border: none;
-        padding: 7px 0;
-        background-color: #e6e6e6;
-        float: left;
-        width: 15%;
-        justify-content: center;
-        display: flex;
-        height: 30px;
-        margin-top: 30px;
-    }
+.memory-row .memory-btn {
+    border: none;
+    padding: 7px 0;
+    background-color: #e6e6e6;
+    float: left;
+    width: 15%;
+    justify-content: center;
+    display: flex;
+    height: 30px;
+    margin-top: 30px;
+}
 
-        .memory-row div:hover {
-            background-color: #ccc;
-        }
+.memory-row div:hover {
+    background-color: #ccc;
+}
+
+.disabled {
+    pointer-events: none;
+    color: #8d8d8d;
+}
+
 /*-------------------------------------------------Memory Tooltip--*/
 .tooltip {
     position: relative;
     font-size: 14px;
 }
 
-    .tooltip .tooltip-text {
-        visibility: hidden;
-        width: 140px;
-        background-color: #e6e6e6;
-        border: 1px solid #ccc;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0px;
-        font-size: 12px;
-        /*transition-delay: 1s;
-        transition-duration: 1s;
-        transition-timing-function: ease-out;*/
-        position: absolute;
-        z-index: 1;
-        left: 50%;
-        bottom: 100%;
-        margin-left: -63%;
-    }
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 140px;
+    background-color: #e6e6e6;
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0px;
+    font-size: 12px;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    bottom: 100%;
+    margin-left: -63%;
+}
 
-    .tooltip:hover .tooltip-text {
-        visibility: visible;
-    }
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+}
+
 /*--------------------------------------------------top-row table--*/
 #toprow {
     display: none;
 }
 
 /*--------------------------------------------------main table-----*/
-
 .maintable {
     border: 2px solid groove;
     width: 100%;
@@ -211,71 +205,68 @@ padding-left: 15px;
     display: table;
 }
 
-    .maintable td {
-        /*padding: 25px 45px;*/
-        width:20%;
-        height:20%;
-        border: 2px solid #ddd;
-        background-color: #fafafa;
-        text-align: center;
-    }
+.maintable td {
+    width:20%;
+    height:20%;
+    border: 2px solid #ddd;
+    background-color: #fafafa;
+    text-align: center;
+}
 
-    .maintable td:hover {
-        background-color: #ccc;
-    }
+.maintable td:hover {
+    background-color: #ccc;
+}
 
-    .maintable td:hover {
-        background-color: #ccc;
-    }
+.maintable td:hover {
+    background-color: #ccc;
+}
 
-    .maintable #equal:hover {
-        background-color: #4599db;
-    }
+.maintable #equal:hover {
+    background-color: #4599db;
+}
 
-    .maintable .OperationButton {
-        background-color: #f0f0f0;
-    }
+.maintable .OperationButton {
+    background-color: #f0f0f0;
+}
 
-    .lucidaFont {
-        font-family: Lucida Calligraphy;
-    }
+.lucidaFont {
+    font-family: Lucida Calligraphy;
+}
+
 /*< ---------------------------------------------main table memory--->*/
-/* #mainHistory {
+.memoryTable {
+    border: 2px solid groove;
+    width: 100%;
+    height: 67%;
+    background-color: #f4f4f4;
+    position: relative;
     display: none;
-} */
-    .memoryTable {
-        border: 2px solid groove;
-        width: 100%;
-        height: 67%;
-        background-color: #f4f4f4;
-        position: relative;
-        display: none;
-    }
+}
 
-    #memoryTableRow,#historyTableRow {
-       padding: 20px;
-       font-size: 14px;
-       width: 100%;
-       height: calc(100% - 50px);
-       overflow-y: auto;
-    }
+#memoryTableRow,#historyTableRow {
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    height: calc(100% - 50px);
+    overflow-y: auto;
+}
 
-    .memoryTableRow:hover {
-        background-color: #d8d8d8;
-    }
+.memoryTableRow:hover {
+    background-color: #d8d8d8;
+}
     
 /*< ---------------------------------------------side column--->*/
 .recyclebin-icon {
-    /*display:none;*/
     padding: 10px 15px;
     position: absolute;
     right: 0;
     bottom: 0;
 }
 
-    .recyclebin-icon:hover {
-        background-color: #ccc;
-    }
+.recyclebin-icon:hover {
+    background-color: #ccc;
+}
+
 /*--------------------------------------------------memory side--*/
 .memory-side {
     display: inline-block;
@@ -287,9 +278,9 @@ padding-left: 15px;
 }
 
 .historyItem,.memoryItem {
-padding: 12px;
-direction: rtl;
-font-weight: normal;
+    padding: 10px;
+    direction: rtl;
+    font-weight: normal;
 }
 
 .historyExpre {
@@ -329,23 +320,20 @@ font-weight: normal;
 }
 
 /*-------------------------------------------------------Column-*/
-
 .column {
     float: left;
 }
 
-    /*right column */
-    .column.side {
-        width: 35%;
-        /*border: 2px solid red;*/
-        position: relative;
-    }
+/*right column */
+.column.side {
+    width: 35%;
+    position: relative;
+}
 
-    /* Middle column */
-    .column.middle {
-        width: 75%;
-        /*border: 2px solid yellow;*/
-    }
+/* Middle column */
+.column.middle {
+    width: 75%;
+}
 
 /* Clear floats after the columns */
 .row:after {
@@ -355,7 +343,6 @@ font-weight: normal;
 }
 
 /*----------------------------------------------------hamberger menue- */
-
 .sidenav {
     height: 100%;  
     width: 0;
@@ -365,7 +352,6 @@ font-weight: normal;
     background-color: #e6e6e6;
     overflow-x: hidden; 
     transition: 0.6s; 
-    /* border: 2px solid brown; */
 }
 
 .sidenav-main{
@@ -373,25 +359,25 @@ font-weight: normal;
     overflow-y: scroll;
 }
 
-  .sidenav-main a{
+.sidenav-main a{
     padding: 10px 8px 10px 32px;
     text-decoration: none;
     font-size: 16px; 
     display: block;
     transition: 0.6s;
     color: black;
-  }
-  
-  .conventer{
+}
+
+.conventer{
     font-weight: bolder;
     font-size: 18px;
-    }
+}
 
-  .sidenav-main a:hover {
+.sidenav-main a:hover {
     background-color:#ccc; 
-  }
+}
 
-  .sidenav-foot {
+.sidenav-foot {
     height: 50px;
     align-items: center;
     justify-content: unset;
@@ -412,10 +398,10 @@ font-weight: normal;
 }
 
 .sidenav-foot a {
-padding: 10px;
-text-decoration: none;
-color: black;
-margin-bottom:5px ;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    margin-bottom:5px ;
 }
 
 .sidenav-foot img {
@@ -431,23 +417,26 @@ margin-bottom:5px ;
 }
 
   /* ----------------- */
-
-  #main {
+#main {
     transition: margin-left .5s;
     padding: 20px;
-  }
+}
+
 .activeMenue {
     background-color:rgb(184, 182, 182);
 }
 
-/* 
+.memoryTable{
+    display: none;
+}
+
 #mainHistory, #mainMemory {
     display: none;
-} */
+} 
 
   /*------------------------------------------------------media----*/
 @media screen and  (max-height: 650px) and (max-width:500px) {
-    .pagination a {
+    .pagination a, .column.side,.maintable tr td.left-column {
         display: none;
     }
 
@@ -464,15 +453,6 @@ margin-bottom:5px ;
         height: 100%;
     }
 
-    .column.side {
-        display: none;
-    }
-
-    .maintable tr td.left-column {
-        /*display:table-cell;*/
-        display: none;
-    }
-
     #toprow {
         display: table-row;
     }
@@ -481,8 +461,13 @@ margin-bottom:5px ;
         height: 16.66%;
     }
 
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
 }
 
  
