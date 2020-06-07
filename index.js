@@ -3,7 +3,7 @@
   const _element = app.elements;
   const _general = app.general;
 
-  for (var i = 0; i < _element.memoryBtn.length; i++) {
+  for (let i = 0; i < _element.memoryBtn.length; i++) {
     _element.memoryBtn[i].addEventListener("click", function (e) {
       switch (e.target.id) {
         case "MS":
@@ -25,7 +25,7 @@
     });
   }
 
-  for (var i = 0; i < _element.numbers.length; i++) {
+  for (let i = 0; i < _element.numbers.length; i++) {
     _element.numbers[i].addEventListener("click", function () {
       app.renderCalc("clickNumber");
     });
@@ -39,11 +39,26 @@
 
   for (let index = 0; index < _element.operationOperators.length; index++) {
     _element.operationOperators[index].addEventListener("click", function () {
-    const o_operator = _element.operationOperators[index].innerText;
-      app.renderCalc("clickOperation",o_operator);
+      const o_operator = _element.operationOperators[index].innerText;
+      app.renderCalc("clickOperation", o_operator);
     });
   }
 
+  _element.closeIcon.onclick = function () {
+    try {
+      window.close();
+    } catch (error) {
+      alert(error)
+    }
+
+  }
+
+  _element.body.onresize = function () {
+    if (window.outerWidth <= 600) return;
+    _element.mainTable.style.display = "table";
+    _element.mainMemory.style.display = "none";
+    _element.mainHistory.style.display = "none";
+  }
 
   _element.hamburgerIcon.onclick = function () {
     if (_element.mySidenav.style.width == "" || _element.mySidenav.style.width == "0px") {
@@ -130,6 +145,18 @@
     _element.result.innerText = _general.txtResult;
   }
 
+  _element.backSpace.onclick = function () {
+    app.renderCalc("backSpace");
+  }
+
+  _element.plusmn.onclick = function () {
+    app.renderCalc("plusmn");
+  }
+
+  _element.mathDecks.onclick = function () {
+    app.renderCalc('mathDecks');
+  }
+
   app.clearAllResult = function () {
     _general.txtResult = "";
     _general.txtExpresion = "";
@@ -140,57 +167,91 @@
     _element.history.innerHTML = "";
     _element.historyTableRow.innerHTML = "";
     for (let index = 0; index < historyList.length; index++) {
-      const mydiv = document.createElement("div");
-      const expdiv = document.createElement("div");
-      const rstdiv = document.createElement("div");
-      expdiv.classList.add("historyExpre");
-      rstdiv.classList.add("historyRst");
-      mydiv.classList.add("historyItem");
-      expdiv.innerHTML = historyList[index].expretion;
-      rstdiv.innerHTML = historyList[index].result;
-      mydiv.appendChild(expdiv);
-      mydiv.appendChild(rstdiv);
-      mydiv.addEventListener('click', event => {
-        _element.expretion.innerText = expdiv.innerHTML;
-        _element.result.innerText = rstdiv.innerHTML;
-      })
-      _element.historyTableRow.appendChild(mydiv);
-      _element.history.appendChild(mydiv);
+      _element.historyTableRow.appendChild(createHistoryItem(historyList[index]));
+      _element.history.appendChild(createHistoryItem(historyList[index]));
     }
     _element.recycleHistory.style.display = "block";
     _element.recycleHistory1.style.display = "block";
   }
 
+  app.addMemory = function (memoryList) {
+    _element.memoryTableRow.innerHTML = "";
+    _element.memory.innerHTML = "";
+    for (let index = 0; index < memoryList.length; index++) {
+      _element.memory.appendChild(createMemoryItem(memoryList[index]));
+      _element.memoryTableRow.appendChild(createMemoryItem(memoryList[index]));
+    }
+    _element.recycleMemory.style.display = "block";
+    _element.recycleMemory1.style.display = "block";
+    _element.memoryStore.classList.remove("disabled");
+    //enable memory button
+    for (let index = 0; index < _element.memoryBtn.length; index++) {
+      switch (_element.memoryBtn[index].id) {
+        case "MC":
+          _element.memoryBtn[index].classList.remove("disabled");
+          break;
+        case "MR":
+          _element.memoryBtn[index].classList.remove("disabled");
+        break;
+      }
+    }
+  }
+
   app.createEmptyHistory = function () {
     _element.history.innerHTML = "There's no history yet";
+    _element.historyTableRow.innerHTML = "There's no history yet";
     _element.recycleHistory.style.display = "none";
     _element.recycleHistory1.style.display = "none";
   }
 
   app.createEmptyMemory = function () {
     _element.memory.innerHTML = "There's nothing saved in memory";
+    _element.memoryTableRow.innerHTML = "There's nothing saved in memory";
     _element.recycleMemory.style.display = "none";
     _element.recycleMemory1.style.display = "none";
+    //disable memory button 
+    _element.memoryStore.classList.remove("disabled");
+    for (let index = 0; index < _element.memoryBtn.length; index++) {
+      switch (_element.memoryBtn[index].id) {
+        case "MC":
+          _element.memoryBtn[index].classList.add("disabled");
+          break;
+        case "MR":
+          _element.memoryBtn[index].classList.add("disabled");
+          break;
+      }
+    }
   }
 
-  app.addMemory = function (memoryList) {
-    _element.memory.innerHTML = "";
-    _element.memoryTableRow.innerHTML = "";
-    for (let index = 0; index < memoryList.length; index++) {
-      const mydiv = document.createElement("div");
-      const rstdiv = document.createElement("div");
-      rstdiv.classList.add("memoryRst");
-      mydiv.classList.add("memoryItem");
-      rstdiv.innerHTML = memoryList[index].result;
-      mydiv.appendChild(rstdiv);
-      mydiv.addEventListener('click', event => {
-        _element.result.innerText = rstdiv.innerHTML;
-      })
-      _element.memoryTableRow.appendChild(mydiv);
-      _element.memory.appendChild(mydiv);
-    }
-    _element.recycleMemory.style.display = "block";
-    _element.recycleMemory1.style.display = "block";
+  function createMemoryItem(memoryListItem) {
+    const mydiv = document.createElement("div");
+    const rstdiv = document.createElement("div");
+    rstdiv.classList.add("memoryRst");
+    mydiv.classList.add("memoryItem");
+    rstdiv.innerHTML = memoryListItem.result;
+    mydiv.appendChild(rstdiv);
+    mydiv.addEventListener('click', event => {
+      _element.result.innerText = rstdiv.innerHTML;
+    })
+    return mydiv;
+  }
+
+  function createHistoryItem(historyListItem) {
+    const mydiv = document.createElement("div");
+    const expdiv = document.createElement("div");
+    const rstdiv = document.createElement("div");
+    expdiv.classList.add("historyExpre");
+    rstdiv.classList.add("historyRst");
+    mydiv.classList.add("historyItem");
+    expdiv.innerHTML = historyListItem.expretion;
+    rstdiv.innerHTML = historyListItem.result;
+    mydiv.appendChild(expdiv);
+    mydiv.appendChild(rstdiv);
+    mydiv.addEventListener('click', event => {
+      _element.expretion.innerText = expdiv.innerHTML;
+      _element.result.innerText = rstdiv.innerHTML;
+    })
+    return mydiv;
   }
 
 }(app);
