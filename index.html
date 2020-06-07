@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 
 <head>
@@ -16,7 +16,7 @@
     <header>
         <span class="title">calculator</span>
         <span class="close-icon">
-            <img
+            <img id="closeIcon"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAQAAABIkb+zAAAAAmJLR0QA/4ePzL8AAAGPSURBVHja7ZpLboNAEET7TM4C3wx2eOnLxuIGZIEif+IxA3T1VCtVSy+a90Bj0SXMFEVRFEVRFEVR/kUG6+DX6GxAjb7YbJOdofhfdrPZrij8Gayw4M8IhV98pMId313hER+l8IzvqjC8DF4UOuejO725itNxPtn3W4Uz8O473ySsAhwfqxCCj1MIw8cohOL7K4Tj+yo0wfdTaIbvo9AU/7hCc/xjChT4+xVo8PcpUOFvV6DD36ZAiV+vQItfp0CNv65Aj/9ZIQV+eaudCr/S4ZefQhr8WgVi/BoFcvw1hQT45eOcBr/0v49vtsH4SRQ+4SdQWMMnV6jBJ1ZI/ipRfmXDl/NQfP9CMhyfXqHufZ9WoX5doVTYtm3RKWxfFqkU9u26NAr7V3UKhWNNQ3OF40VJUwWfnqeZgl9N1UTBt2ULV/AvCUMVMB1nmAKuog1RwDbMcAV8QQ5WSP/JmVkfsJT/fQqj5/g+oFN4Vhi9x/cBlchdYUSM7wManUVhRI1P/vG3oiiKoiiKoigKVX4AxfisUvGZTgwAAAAASUVORK5CYII=" />
         </span>
         <span>
@@ -82,11 +82,11 @@
             </div>
 
             <div class="memory-row">
-                <div class="memory-btn tooltip" id="MC">
+                <div class="memory-btn tooltip disabled" id="MC">
                     MC
                     <span class="tooltip-text">Clear All Memory(Ctr+L)</span>
                 </div>
-                <div class="memory-btn tooltip" id="MR">
+                <div class="memory-btn tooltip disabled" id="MR">
                     MR
                     <span class="tooltip-text">Memory recall(Ctr+R)</span>
                 </div>
@@ -102,7 +102,7 @@
                     MS
                     <span class="tooltip-text">Memory store(Ctr+M)</span>
                 </div>
-                <div class="memory-btn tooltip" id="memory-Store">
+                <div class="memory-btn tooltip disabled" id="memory-Store">
                     M<img
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABmJLR0QA/wD/AP+gvaeTAAAB9UlEQVR4nO3avYoTYRhH8TPKaKGCvddgYyUWVkLuwJtQUmQiSbmWUZwUgjfhHUy/VmLhNdiLH4tKkhkbsV7XPO/Hcn5liucN/wOpApIkSZIkSZIkSZIkSZIkSZIkSZKkWjWRx/u+fzxN0zPgLnA98q0Av4CPwMuu695GPRIWoO/7p9M0vY66n1LTNE8Wi8WbkNsRR7fb7e1xHD8BNyLuZ/C9bds78/n867EPXzn2QYBxHB9wecYHuLnf7+9HHA4JcBmN4xjyaxESYLfbnQI/Im5ncnY4HN5FHA4JsF6vvwBdxO0cmqZZrlarbxG3r0YcBRiG4f1sNvsJPIp6I5GTruteRR0PCwAwDMNp5RFOuq57HvlAaACoOkL4+JAgAFQZIcn4kCgAVBUh2fiQMABUESHp+JA4ABQdIfn4kCEAFBkhy/iQKQAUFSHb+JAxABQRIev4kDkAZI2QfXwoIABkiVDE+FBIAEgaoZjxoaAAkCRCUeNDYQEgNEJx40OBASAkQpHjQ6EB4KgRih0fCg4AR4lQ9PhQeAD4rwjFjw8VBIALRahifKgkAPxThGrGh4oCwLkiVDU+VBYA/kb4DDwErv35+GyapuVyuXyR8atdSOi/oyNtNptbbdveA9jtdh+i/rcjSZIkSZIkSZIkSZIkSZIkqRK/Aatx6SzdM82mAAAAAElFTkSuQmCC"
                         width="10" height="10" id="sortDownImg" />
@@ -174,7 +174,7 @@
                     </div>
                 </div>
             </div>
-            <div class="memoryTable" id="mainMemory">
+             <div class="memoryTable" id="mainMemory">
                 <div id="memoryTableRow">
                     <div>There's nothing saved in memory</div>
                 </div>
@@ -184,7 +184,7 @@
                             width="20" height="20" />
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
 
         <div class="column side">
@@ -251,6 +251,7 @@
                 mainMemory: document.getElementById("mainMemory"),
                 mainTable: document.getElementById("mainTable"),
                 percent: document.getElementById("percent"),
+                closeIcon: document.getElementById("closeIcon"),
                 historyTableRow: document.getElementById("historyTableRow"),
                 memoryTableRow: document.getElementById("memoryTableRow"),
                 mainOperators: document.getElementsByClassName("operator"),
