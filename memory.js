@@ -10,17 +10,17 @@
             'clearM': clearMemory,
             };
 
-    app.renderMemory = function (type) {
+    app.renderMemory = function (type,value) {
         var render = _process[type];
         if (!render) return;
-        render();
+        render(value);
     }
 
-    function createMemory() {
+    function createMemory(value) {
         if (!memoryItems.length) {
             app.createEmptyMemory();
         } else {
-            app.addMemory(memoryItems);
+            app.addMemory(memoryItems, value);
         }
     }
 
@@ -30,7 +30,7 @@
             result: _element.result.innerText
         }
         memoryItems.push(newItem);
-        createMemory();
+        createMemory(_element.memory);
     }
 
     function subtractMemory() {
@@ -44,7 +44,7 @@
             result: eval(_element.result.innerText) + eval( memoryItems[memoryItems.length - 1].result)
         }
         memoryItems.push(newItem);
-        createMemory();
+        createMemory(_element.memory);
     }
 
     function recallMemory() {
@@ -53,12 +53,13 @@
     }
 
     function clearMemory() {
+        memoryItems = [];
         app.createEmptyMemory();
     }
 
     _element.recycleMemory.parentNode.onclick = function () {
         memoryItems = [];
-        createMemory();
+        createMemory(_element.memory);
     }
 
 }(app);
